@@ -7,12 +7,12 @@ class DialogGetInformation extends StatefulWidget {
   final String code;
   final BuildContext context;
 
-  const DialogGetInformation({super.key, required this.code, required this.context});
+  const DialogGetInformation(
+      {super.key, required this.code, required this.context});
 
   @override
   DialogGetInformationState createState() => DialogGetInformationState();
 }
-
 
 class DialogGetInformationState extends State<DialogGetInformation>
     with SingleTickerProviderStateMixin {
@@ -93,9 +93,8 @@ class DialogGetInformationState extends State<DialogGetInformation>
   Future<void> getRequest() async {
     HttpGetRequest httpRequest = HttpGetRequest();
     showFoot2();
-    String url = 'http://34.125.252.26:8080/api/consultar/${widget.code}';
+    String url = 'http://34.171.18.250:8080/api/consultar/${widget.code}';
     String? result = await httpRequest.fetchUrl(url);
-
 
     if (result == null || result.isEmpty) {
       sendDialogo(
@@ -186,7 +185,10 @@ class DialogGetInformationState extends State<DialogGetInformation>
             ),
             boxShadow: [
               BoxShadow(
-                color: Theme.of(context).colorScheme.inverseSurface.withOpacity(.2),
+                color: Theme.of(context)
+                    .colorScheme
+                    .inverseSurface
+                    .withOpacity(.2),
                 blurRadius: 10.0,
                 offset: const Offset(0.0, 0.0),
               ),
@@ -225,7 +227,9 @@ class DialogGetInformationState extends State<DialogGetInformation>
                         animation: controllerAnimation,
                         builder: (context, child) {
                           return Transform.rotate(
-                            angle: controllerAnimation.value * 2 * 3.1415926535897932,
+                            angle: controllerAnimation.value *
+                                2 *
+                                3.1415926535897932,
                             child: Visibility(
                               visible: isLoading,
                               child: Image.asset(
@@ -292,7 +296,8 @@ class DialogGetInformationState extends State<DialogGetInformation>
                         fontSize: 12,
                       ),
                     ),
-                    const SizedBox(height: 10), // Espaciado entre el texto y el botón
+                    const SizedBox(
+                        height: 10), // Espaciado entre el texto y el botón
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

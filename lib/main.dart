@@ -1,3 +1,4 @@
+import 'package:desing_ipscamv2/cargando.dart';
 import 'package:flutter/material.dart';
 import 'theme/color_schemes.g.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,7 @@ void main() {
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       title: 'Principal',
-      home: HomePage(),
+      home: PantallaCargando(),
     ),
   );
 }
@@ -21,7 +22,6 @@ class HomePage extends StatefulWidget {
   late final BuildContext context2;
   @override
   HomePageState createState() => HomePageState();
-
 }
 
 class HomePageState extends State<HomePage> {
@@ -53,8 +53,9 @@ class HomePageState extends State<HomePage> {
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Theme.of(context).colorScheme.background,
         //systemNavigationBarIconBrightness: Brightness.light,
-        statusBarIconBrightness:  Brightness.light,
-        systemNavigationBarIconBrightness: isDarkModeEnabled ? Brightness.light : Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness:
+            isDarkModeEnabled ? Brightness.light : Brightness.dark,
       ),
     );
     double displayWidth = MediaQuery.of(context).size.width;
@@ -63,10 +64,11 @@ class HomePageState extends State<HomePage> {
         margin: EdgeInsets.all(displayWidth * .05),
         height: displayWidth * .155,
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+          color: Theme.of(context).colorScheme.background,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.inverseSurface.withOpacity(.2),
+              color:
+                  Theme.of(context).colorScheme.inverseSurface.withOpacity(.2),
               blurRadius: 10,
               offset: Offset(0, 10),
             ),
@@ -104,7 +106,10 @@ class HomePageState extends State<HomePage> {
                         width: index == currentIndex ? displayWidth * .32 : 0,
                         decoration: BoxDecoration(
                           color: index == currentIndex
-                              ? Theme.of(context).colorScheme.primary.withOpacity(.15)
+                              ? Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(.15)
                               : Colors.transparent,
                           /*
                           color: index == currentIndex
@@ -146,7 +151,8 @@ class HomePageState extends State<HomePage> {
                                       : '',
                                   style: TextStyle(
                                     //color: Colors.blueAccent,
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15,
                                   ),
@@ -173,8 +179,13 @@ class HomePageState extends State<HomePage> {
                                  */
 
                                 color: index == currentIndex
-                                    ? Theme.of(context).colorScheme.primary // Color activo
-                                    : Theme.of(context).colorScheme.onSecondaryContainer.withOpacity(0.7), // Color inactivo
+                                    ? Theme.of(context)
+                                        .colorScheme
+                                        .primary // Color activo
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer
+                                        .withOpacity(0.7), // Color inactivo
                               ),
                             ],
                           ),
@@ -190,6 +201,4 @@ class HomePageState extends State<HomePage> {
       body: pages[currentIndex], // Cuerpo de la página actual
     );
   }
-
-
 }

@@ -75,7 +75,7 @@ class PantallaInicio extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Row(
                       children: [
                         Expanded(
@@ -96,11 +96,11 @@ class PantallaInicio extends StatelessWidget {
                           onPressed: () async {
                             if (!await InternetChecker.isInternetAvailable()) {
                               DialogNotConnection dialognoconnection =
-                              DialogNotConnection(
-                                  titulo: 'Sin conexión',
-                                  info:
-                                  'No cuenta con una conexión a internet, por favor verifique el estado de la misma y vuelva a intentaro.',
-                                  icono: 0);
+                                  DialogNotConnection(
+                                      titulo: 'Sin conexión',
+                                      info:
+                                          'No cuenta con una conexión a internet, por favor verifique el estado de la misma y vuelva a intentaro.',
+                                      icono: 0);
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -114,11 +114,11 @@ class PantallaInicio extends StatelessWidget {
                                 getInformation(context, _cod_placa.text);
                               } else {
                                 DialogNotConnection dialognoconnection =
-                                DialogNotConnection(
-                                    titulo: 'Placa inválida',
-                                    info:
-                                    'El número de placa ingresado no es válido, ingrese un numero válido.',
-                                    icono: 1);
+                                    DialogNotConnection(
+                                        titulo: 'Placa inválida',
+                                        info:
+                                            'El número de placa ingresado no es válido, ingrese un numero válido.',
+                                        icono: 1);
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -144,11 +144,11 @@ class PantallaInicio extends StatelessWidget {
                   Icons.photo_camera_back_outlined,
                   'Tome una fotografia de su vehiculo y escanee el código de la placa',
                   'Escanear Ahora',
-                      () {
+                  () {
                     photoScam(context, 1);
                   },
                   iconColor:
-                  Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                      Theme.of(context).colorScheme.primary.withOpacity(0.8),
                   buttonColor: Theme.of(context).colorScheme.primary,
                 ),
                 SizedBox(width: 5),
@@ -157,11 +157,11 @@ class PantallaInicio extends StatelessWidget {
                   Icons.image_search,
                   'Seleccione una fotografia de su galeria y escanee el código de placa.',
                   'Buscar Ahora',
-                      () {
+                  () {
                     photoScam(context, 2);
                   },
                   iconColor:
-                  Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+                      Theme.of(context).colorScheme.secondary.withOpacity(0.8),
                   buttonColor: Theme.of(context).colorScheme.secondary,
                 ),
                 SizedBox(width: 5),
@@ -188,14 +188,14 @@ class PantallaInicio extends StatelessWidget {
 
   // Construye un Card personalizado
   Widget _buildCard(
-      BuildContext context,
-      IconData icon,
-      String title,
-      String buttonText,
-      VoidCallback onPressed, {
-        Color? iconColor,
-        Color? buttonColor,
-      }) {
+    BuildContext context,
+    IconData icon,
+    String title,
+    String buttonText,
+    VoidCallback onPressed, {
+    Color? iconColor,
+    Color? buttonColor,
+  }) {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -203,7 +203,7 @@ class PantallaInicio extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color:
-              Theme.of(context).colorScheme.inverseSurface.withOpacity(.2),
+                  Theme.of(context).colorScheme.inverseSurface.withOpacity(.2),
               blurRadius: 10, // Radio de desenfoque
               offset: Offset(0, 0), // Desplazamiento (x, y)
             ),
@@ -290,11 +290,11 @@ class PantallaInicio extends StatelessWidget {
     final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
 
     final RecognizedText recognizedText =
-    await textRecognizer.processImage(image);
+        await textRecognizer.processImage(image);
 
     CleanText formatText = CleanText(recognizedText.text, context_p);
     _cod_placa.text = formatText.getCleanText();
-    if(_cod_placa.text.isNotEmpty) {
+    if (_cod_placa.text.isNotEmpty) {
       getInformation(context, _cod_placa.text);
     }
   }
