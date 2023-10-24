@@ -73,10 +73,12 @@ class DialogGetInformationState extends State<DialogGetInformation>
   }
 
   void mostrarFoot2(bool sh) {
-    setState(() {
-      sFoot2 = sh;
-      sFoot = false;
-    });
+    try {
+      setState(() {
+        sFoot2 = sh;
+        sFoot = false;
+      });
+    } catch (e) {}
   }
 
   void cambiarButtom(String value) {
